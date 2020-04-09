@@ -53,6 +53,11 @@ us. Let's make sure it's there.
 ls
 ```
 
+_**windows**_
+```
+dir
+```
+
 `ls` is the command to list all of the files in the current working directory.
 You should see a bunch of files and folders come up, and amongst them should
 be `test_directory` that we just created.
@@ -163,6 +168,11 @@ cp data.txt data2.txt
 ls
 ```
 
+_**windows**_
+```
+copy data.txt data2.txt
+```
+
 Now we have two copies of the data file! Nice. How do we know which came
 first? Let's get a bit fancier with our `ls` command and include a special
 flag.
@@ -201,12 +211,22 @@ mv data2.txt NEW_FILE_NAME.txt
 ls
 ```
 
+_**windows**_
+```
+move data2.txt NEW_FILE_NAME.txt
+```
+
 There's no need to keep two of the same file, so let's go ahead and delete the
 one we just renamed.
 
 ```bash
 rm NEW_FILE_NAME.txt
 ls
+```
+
+_**windows**_
+```
+del NEW_FILE_NAME.txt
 ```
 
 Now let's try to make and copy a directory to see how things change when we
@@ -216,6 +236,13 @@ aren't working with solo files anymore.
 mkdir test_directory
 cp test_directory test_directory2
 ls
+```
+
+_**windows**_
+```
+md / mkdir test_directory
+xcopy /E test_directory test_directory2
+dir
 ```
 
 That doesn't work because the command line says, "whoa, are you sure you want
@@ -234,10 +261,16 @@ If we want to delete a whole directory, we have to do exactly the same thing.
 directory, so it will only delete whole directories if you give it a proper
 flag.
 
-```basg
+```bash
 rm -r test_directory
 rm -r test_directory2
 ls
+```
+
+_**windows**_
+```
+del test_directory
+del test_directory2
 ```
 
 **Warning: There is no recycle bin in command line. When you do `rm` it's gone
@@ -265,6 +298,11 @@ dataset by doing:
 cat data.txt | grep "honda"
 ```
 
+_**windows**_
+```
+type data.txt | findstr "honda"
+```
+
 This does cat on the file, hands the output to grep, and says, "show me all
 the lines that have the characters "honda" in them. `grep` can be a great tool
 for searching through files and finding how our data looks.
@@ -273,6 +311,11 @@ for searching through files and finding how our data looks.
 
 ```bash
 grep "honda" data.txt
+```
+
+_**windows**_
+```
+findstr "honda" data.txt
 ```
 
 Or I can even check ALL of the files in the folder by introducing the
@@ -313,6 +356,11 @@ with our dataset.
 
 ```bash
 cat data.txt | wc
+```
+
+_**windows**_
+```
+type data.txt | find /v /c ""
 ```
 This returns the number of: lines, words, and characters in the file. So we
 can immediately see that our dataset has 398 rows.
